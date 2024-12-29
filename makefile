@@ -18,7 +18,7 @@ clean:; forge clean
 remove:; rm -rf .gitmodules && rm -rf .git/modules/* && rm -rf lib && touch .gitmodules && git add . && git commit -m "modules"
 
 # Install dependencies
-install:; forge install Harystyleseze/foundry-devops@0.0.11 --no-commit && forge install foundry-rs/forge-std@v1.5.3 --no-commit && forge install openzeppelin/openzeppelin-contracts@v4.8.3 --no-commit
+install:; forge install Harystyleseze/foundry-devops --no-commit && forge install openzeppelin/openzeppelin-contracts@v4.8.3 --no-commit
 
 # Update dependencies
 update:; forge update
@@ -43,6 +43,10 @@ NETWORK_ARGS := --rpc-url http://localhost:8546 --private-key $(DEFAULT_ANVIL_KE
 
 ifeq ($(findstring --network holesky,$(ARGS)),--network holesky)
 	NETWORK_ARGS := --rpc-url $(HOLESKY_RPC_URL) --private-key $(PRIVATE_KEY) --broadcast
+endif
+
+ifeq ($(findstring --network mekong,$(ARGS)),--network mekong)
+	NETWORK_ARGS := --rpc-url $(MEKONG_RPC_URL) --private-key $(PRIVATE_KEY) --broadcast
 endif
 
 ifeq ($(findstring --network sepolia,$(ARGS)),--network sepolia)

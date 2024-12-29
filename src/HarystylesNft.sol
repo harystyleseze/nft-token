@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import {ERC721} from "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 contract HarystylesNft is ERC721 {
     uint256 private tokenCounter;
-    mapping(uint256 => string) private tokenIdToUri;
+    mapping(uint256 tokenId => string tokenUri) private tokenIdToUri;
 
     constructor() ERC721("HarystylesNft", "HSN") {
         tokenCounter = 0;
